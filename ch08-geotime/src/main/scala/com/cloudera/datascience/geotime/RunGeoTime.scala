@@ -20,6 +20,7 @@ import com.cloudera.datascience.geotime.GeoJsonProtocol._
 
 class RichRow(row: Row) {
   def getAs[T](field: String): Option[T] =
+  //解决了row获取数据可能为空的问题
     if (row.isNullAt(row.fieldIndex(field))) None else Some(row.getAs[T](field))
 }
 
